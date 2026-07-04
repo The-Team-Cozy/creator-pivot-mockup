@@ -35,6 +35,10 @@
         .nav-link { transition: color 0.2s; cursor: pointer; }
         .nav-link:hover { color: #fff; }
         .nav-link.active { color: #3b82f6; font-weight: 600; }
+        
+        .module-list-item { padding: 1rem; border-bottom: 1px solid #2d323b; display: flex; gap: 1rem; align-items: flex-start; transition: background-color 0.2s; }
+        .module-list-item:hover { background-color: rgba(255,255,255,0.02); }
+        .module-list-item:last-child { border-bottom: none; }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
@@ -121,52 +125,244 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- Track A -->
-                    <div class="bg-bgsurface rounded-2xl border border-slate-800 p-8">
-                        <div class="inline-block bg-blue-500/20 text-blue-400 font-semibold px-3 py-1 rounded-full text-sm mb-4">Track A</div>
+                    <div class="bg-bgsurface rounded-2xl border border-slate-800 p-8 flex flex-col h-full cursor-pointer hover:border-blue-500/50 transition-colors" onclick="navigate('track-a')">
+                        <div class="inline-block bg-blue-500/20 text-blue-400 font-semibold px-3 py-1 rounded-full text-sm mb-4 self-start">Track A</div>
                         <h3 class="text-2xl font-bold text-white mb-2">The 10k Blueprint</h3>
-                        <p class="text-slate-400 mb-8">The complete foundation for new creators. Learn scripting, shooting, basic editing, and how to actually get views.</p>
+                        <p class="text-slate-400 mb-8 flex-grow">The complete foundation for new creators. Learn scripting, shooting, basic editing, and how to actually get views.</p>
                         
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3 p-3 rounded-lg bg-bgbase border border-slate-800">
-                                <div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-slate-400 text-sm font-bold">1</div>
-                                <span class="text-slate-300 font-medium">Finding Videos People Actually Want</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 rounded-lg bg-bgbase border border-slate-800">
-                                <div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-slate-400 text-sm font-bold">2</div>
-                                <span class="text-slate-300 font-medium">Scripting Without Sounding Scripted</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 rounded-lg bg-bgbase border border-slate-800">
-                                <div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-slate-400 text-sm font-bold">3</div>
-                                <span class="text-slate-300 font-medium">Thumbnails: The 2-Second Click Test</span>
-                            </div>
-                            <div class="text-center pt-2"><span class="text-slate-500 text-sm italic">+ 12 more modules</span></div>
+                        <div class="mt-auto border-t border-slate-800 pt-6">
+                            <span class="text-blue-400 font-medium flex items-center gap-2 group-hover:text-blue-300">Explore Curriculum <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></span>
                         </div>
                     </div>
 
                     <!-- Track B -->
-                    <div class="bg-bgsurface rounded-2xl border border-slate-800 p-8">
-                        <div class="inline-block bg-orange-500/20 text-orange-400 font-semibold px-3 py-1 rounded-full text-sm mb-4">Track B</div>
+                    <div class="bg-bgsurface rounded-2xl border border-slate-800 p-8 flex flex-col h-full cursor-pointer hover:border-orange-500/50 transition-colors" onclick="navigate('track-b')">
+                        <div class="inline-block bg-orange-500/20 text-orange-400 font-semibold px-3 py-1 rounded-full text-sm mb-4 self-start">Track B</div>
                         <h3 class="text-2xl font-bold text-white mb-2">Scaling Systems</h3>
-                        <p class="text-slate-400 mb-8">For established creators drowning in workflow. Upgrade your production, analytics, and business backend.</p>
+                        <p class="text-slate-400 mb-8 flex-grow">For established creators drowning in workflow. Upgrade your production, analytics, and business backend.</p>
                         
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3 p-3 rounded-lg bg-bgbase border border-slate-800">
-                                <div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-slate-400 text-sm font-bold">1</div>
-                                <span class="text-slate-300 font-medium">Advanced B-Roll & Visual Storytelling</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 rounded-lg bg-bgbase border border-slate-800">
-                                <div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-slate-400 text-sm font-bold">2</div>
-                                <span class="text-slate-300 font-medium">Templating & Post-Production Speed</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 rounded-lg bg-bgbase border border-slate-800">
-                                <div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-slate-400 text-sm font-bold">3</div>
-                                <span class="text-slate-300 font-medium">Sponsors and Brand Deals Pipeline</span>
-                            </div>
-                            <div class="text-center pt-2"><span class="text-slate-500 text-sm italic">+ 12 more modules</span></div>
+                        <div class="mt-auto border-t border-slate-800 pt-6">
+                           <span class="text-orange-400 font-medium flex items-center gap-2 group-hover:text-orange-300">Explore Curriculum <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></span>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section id="track-a" class="page-section">
+             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <button onclick="navigate('academy')" class="text-slate-400 hover:text-white flex items-center gap-2 mb-8 text-sm transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Academy
+                </button>
+                
+                <div class="mb-12">
+                    <div class="inline-block bg-blue-500/20 text-blue-400 font-semibold px-3 py-1 rounded-full text-sm mb-4">Track A</div>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">The 10k Blueprint</h2>
+                    <p class="text-xl text-slate-400">The complete foundation for new creators. 15 actionable modules to get your channel off the ground.</p>
+                </div>
+
+                <div class="bg-bgsurface rounded-2xl border border-slate-800 overflow-hidden">
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">So You Want to Be a YouTuber</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Find Your Niche & Audience</h4>
+                        </div>
+                    </div>
+                     <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">3</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Finding Videos People Actually Want</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">4</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Scripting Without Sounding Scripted</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">5</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Thumbnails: The 2-Second Click Test</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">6</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Titles, Descriptions, and Upload Details</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">7</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">The Best Beginner Video Outline</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">8</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">How to Record Your First Videos</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">9</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">A-Roll, B-Roll, and What Viewers See</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">10</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Hooks, Intros, and the First 30 Seconds</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">11</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Editing 101: Cut, Polish, and Export</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">12</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Editing for Retention</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">13</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Uploading: Putting Everything Together</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">14</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Your First 30 Days: Schedule and Analytics</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">15</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Graduation: Your Beginner Creator Game Plan</h4>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <section id="track-b" class="page-section">
+             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <button onclick="navigate('academy')" class="text-slate-400 hover:text-white flex items-center gap-2 mb-8 text-sm transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Academy
+                </button>
+                
+                <div class="mb-12">
+                    <div class="inline-block bg-orange-500/20 text-orange-400 font-semibold px-3 py-1 rounded-full text-sm mb-4">Track B</div>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Scaling Systems</h2>
+                    <p class="text-xl text-slate-400">For established creators drowning in workflow. 15 modules to upgrade your production and business backend.</p>
+                </div>
+
+                <div class="bg-bgsurface rounded-2xl border border-slate-800 overflow-hidden">
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Upgrading From Beginner to Creator</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Building a More Professional Recording Setup</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">3</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Lighting, Camera Framing, and Backgrounds</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">4</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Audio Cleanup and Voiceover Polish</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">5</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">How to Edit Green Screen Footage</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">6</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Advanced B-Roll, Gameplay, and Visual Storytelling</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">7</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Editing for Retention, Pace, and Energy</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">8</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Text, Motion Graphics, Zooms, and On-Screen Effects</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">9</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Music, Sound Effects, and Final Audio Mix</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">10</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Advanced Thumbnail Course</h4>
+                        </div>
+                    </div>
+                     <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">11</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Templating</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">12</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Advanced Analytics: Finding What Actually Went Wrong</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">13</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Monetization</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">14</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Sponsors, and Brand Deals</h4>
+                        </div>
+                    </div>
+                    <div class="module-list-item">
+                        <div class="w-8 h-8 shrink-0 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold">15</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Self Marketing</h4>
+                        </div>
+                    </div>
+                </div>
+             </div>
         </section>
 
         <section id="services" class="page-section">
