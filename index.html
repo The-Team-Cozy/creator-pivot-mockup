@@ -383,7 +383,7 @@
                             <li class="flex items-center gap-2"><span class="text-green-400">✓</span> Simple music/SFX & leveling</li>
                             <li class="flex items-center gap-2"><span class="text-green-400">✓</span> 1 revision round</li>
                         </ul>
-                        <button class="w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-white font-medium transition-colors">Inquire</button>
+                        <button onclick="openForm('Tier 1: Basic Edit')" class="w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-white font-medium transition-colors">Inquire</button>
                     </div>
                     <div class="glass-card p-6 rounded-xl border-t-2 border-t-blue-500 relative transform md:-translate-y-4 shadow-2xl">
                         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">POPULAR</div>
@@ -394,7 +394,7 @@
                             <li class="flex items-center gap-2"><span class="text-blue-400">✓</span> Flashy Custom Intros</li>
                             <li class="flex items-center gap-2"><span class="text-blue-400">✓</span> Advanced B-Roll & Motion Graphics</li>
                         </ul>
-                        <button class="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-medium transition-colors">Inquire</button>
+                        <button onclick="openForm('Tier 2: Creator Edit')" class="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-medium transition-colors">Inquire</button>
                     </div>
                     <div class="glass-card p-6 rounded-xl border-t-2 border-t-purple-500">
                         <h4 class="text-xl font-bold text-white mb-1">Tier 3: Full Edit</h4>
@@ -404,7 +404,7 @@
                             <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Full Premium Video Edit</li>
                             <li class="flex items-center gap-2"><span class="text-purple-400">✓</span> Title & Thumbnail design included</li>
                         </ul>
-                        <button class="w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-white font-medium transition-colors">Inquire</button>
+                        <button onclick="openForm('Tier 3: Full Edit Package')" class="w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-white font-medium transition-colors">Inquire</button>
                     </div>
                 </div>
 
@@ -451,7 +451,88 @@
         </div>
     </footer>
 
+    <!-- Inquiry Modal -->
+    <div id="inquiry-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeForm()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md">
+            <div class="bg-bgsurface border border-slate-700 rounded-2xl shadow-2xl overflow-hidden animate-fadeIn">
+                <!-- Modal Header -->
+                <div class="bg-slate-800/50 border-b border-slate-700 px-6 py-4 flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white">Project Inquiry</h3>
+                    <button onclick="closeForm()" class="text-slate-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                
+                <!-- Modal Body -->
+                <div class="p-6">
+                    <form onsubmit="submitForm(event)" class="space-y-4">
+                        <!-- Hidden field to store which service they clicked -->
+                        <input type="hidden" id="service-interest" name="service">
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Channel Name / URL</label>
+                            <input type="text" required class="w-full bg-bgbase border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" placeholder="youtube.com/@yourchannel">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Email Address</label>
+                            <input type="email" required class="w-full bg-bgbase border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all" placeholder="you@example.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Selected Service</label>
+                            <div id="selected-service-display" class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-2.5 text-blue-400 font-medium">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Tell us about your goals</label>
+                            <textarea rows="3" class="w-full bg-bgbase border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none" placeholder="I need help with..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-bold transition-colors mt-2 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Modal Logic
+        function openForm(serviceName) {
+            document.getElementById('inquiry-modal').classList.remove('hidden');
+            document.getElementById('service-interest').value = serviceName;
+            document.getElementById('selected-service-display').textContent = serviceName;
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeForm() {
+            document.getElementById('inquiry-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            // In a real app, you would send this data to a backend (like Notion, Zapier, or a database)
+            
+            // Show a mock success state
+            const modalBody = document.querySelector('#inquiry-modal .p-6');
+            modalBody.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Inquiry Sent!</h4>
+                    <p class="text-slate-400 mb-6">Our team will review your channel and be in touch within 24 hours.</p>
+                    <button onclick="closeForm()" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">Close</button>
+                </div>
+            `;
+        }
+
         function navigate(pageId) {
             // Hide all pages
             document.querySelectorAll('.page-section').forEach(section => {
